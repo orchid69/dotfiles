@@ -317,7 +317,7 @@ fi
 if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
     if [ ${HOST} = "molokai" -o ${HOST} = "hawaii" ]; then
         PROMPT=$tmp_prompt2
-    elif [ ${HOST} = "mai" ]; then
+    elif [ ${HOST} = "mai" -o ${HOST} = "camel" -o ${HOST} = "bateau" ]; then
         PROMPT=$tmp_prompt3
     elif [ ${HOST} = "menorca" ]; then
         PROMPT=$tmp_prompt5

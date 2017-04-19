@@ -18,6 +18,13 @@ menorca )
 molokai )
     xrandr --output DVI-I-1 --mode 1024x768
     ;;
+caster )
+    xrandr --output HDMI-0 --right-of DVI-I-1
+    xrandr --output DP-3 --left-of DVI-I-1
+    xrandr --output HDMI-0 --rotate right
+    ;;
+bateau )
+    ;;
 * )
     ;;
 esac
