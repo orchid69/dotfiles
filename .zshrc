@@ -250,6 +250,7 @@ case $HOST in
 	
 	source /usr/local/bin/virtualenvwrapper.sh
 	export WORKON_HOME=~/.virtualenvs
+    ;;
     * )
       export PATH=/opt/mentor/modeltech_SE10.4c/bin:$PATH
       export PATH=/opt/synopsys/syn_vI-2013.12-SP2/bin:$PATH
