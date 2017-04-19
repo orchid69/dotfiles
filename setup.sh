@@ -5,15 +5,6 @@ SERVER=menorca
 DIR=/home/satoshi
 HOME=/home/satoshi
 
-echo "install i3"
-sudo apt-get install i3
-
-echo "install sshfs"
-sudo apt-get install sshfs
-
-echo "install zsh"
-sudo apt-get install zsh
-
 echo "make link"
 ln -s $HOME/dotfiles/.i3 .
 
