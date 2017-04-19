@@ -231,9 +231,9 @@ fi
 
 case $HOST in
     molokai )
-	export PATH=/usr/local/cuda-7.5/bin:$PATH
-	export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
-	export CUDA_HOME=/usr/local/cuda
+	export CUDA_HOME=/usr/local/cuda-8.0
+	export PATH=$CUDA_HOME/bin:$PATH
+	export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
     . /opt/torch/install/bin/torch-activate
 	;;
     hawaii ) 
@@ -241,6 +241,15 @@ case $HOST in
 	export PATH=$CUDA_HOME/bin:$PATH
 	export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
     ;;
+    caster | king)
+	export PATH=/usr/local/cuda/bin:$PATH
+	export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+	
+	export PATH=~/torch/bin:$PATH
+	export LD_LIBRARY_PATH=~/torch/lib:$LD_LIBRARY_PATH 
+	
+	source /usr/local/bin/virtualenvwrapper.sh
+	export WORKON_HOME=~/.virtualenvs
     * )
       export PATH=/opt/mentor/modeltech_SE10.4c/bin:$PATH
       export PATH=/opt/synopsys/syn_vI-2013.12-SP2/bin:$PATH
@@ -249,10 +258,6 @@ case $HOST in
 	;;
 esac
 
-#firefox version 50
-# export PATH=/home/satoshi/Downloads/firefox:$PATH
-# export PATH=/home/satoshi/Document/processing-2.2.1:$PATH
-# export PATH=/home/satoshi/bin/usr/local/bin:$PATH
 export PATH=/home/satoshi/local/bin:$PATH
 
 # 以下はhttp://d.hatena.ne.jp/oovu70/20120405/p1を参考
