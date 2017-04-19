@@ -1,0 +1,268 @@
+" タイトル文字列
+set titlestring=Firefox
+
+" スクロールの端などの際に出るbeepをoff
+beep off
+" エラー時にベルを鳴らさない
+set noerrorbells
+
+" アドオンインストール時の待ち時間カット
+set! security.dialog_enable_delay=0
+
+" プライベートブラウジング
+noremap <C-p> :winopen -private<CR>
+
+" Ctrl+r で再起動
+map <C-r> :restart<CR>
+" R で.vimperatorrcを再読込み
+map R :source ~/.vimperatorrc<CR>
+
+"=======================================================
+
+" h,lに前のタブ,次のタブを割り当てる
+nnoremap h <C-PageUp>
+nnoremap l <C-PageDown>
+
+" H/Lに左右を割り当てる
+map H <Left>
+map L <Right>
+
+" Ctrl+h/Ctrl+lに戻る/進むを割り当てる
+map <C-h> <A-Left>
+map <C-l> <A-Right>
+
+" j,kによる上下スクロールの移動量を5倍に設定
+nnoremap j 5<C-e>
+nnoremap k 5<C-y>
+
+" Ctrl+aで全選択になるようにする
+noremap <C-a> i<C-a>
+inoremap <C-a> <insert><C-a><insert>
+
+" Uで最近閉じたタブを表示する
+map U :u<Space>
+
+" 検索時、大文字が含まれている場合にのみ case sensitiveにする
+set ignorecase
+set smartcase
+
+" デフォルトの検索エンジン
+set defsearch=google
+
+" sでぐぐる
+nnoremap s :tabopen<Space>google<Space>
+
+" 選択文字列でぐぐる(マウスとVISUALモードの選択時に対応)
+nmap S <C-c>:tabopen<Space>google<Space><C-v><CR>
+vmap S <C-c><Esc><Esc>:tabopen<Space>google<Space><C-v><CR>
+vnomap l <Right>
+vnomap h <Left>
+vnomap j <Dowm>
+vnomap k <UP>
+
+" pは文字列によってURLと判断されて誤爆するので明示的にGoogle検索を指定する
+nnoremap p :tabopen<Space>google<Space><C-v><CR>
+
+" 自動補完の候補
+set complete=sl
+
+" コマンドモードではIMEをOFFに
+style! -name=commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+" 入力欄に自動フォーカスしない
+set focuscontent
+
+" ヒントに使用する文字。ここの設定は0からスタートだが表示は1から
+set hintchars=;asdfghjkl
+
+" ヒント表示色
+highlight Hint font-family: Arial; font-size: 16px; font-weight: bold; text-shadow: -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black, 1px 1px 2px black; color: #33cccc;
+highlight HintElem color: gray; background-color: #a1e4e6;
+highlight HintActive color: black; background-color: #ff8700;
+
+" エラー色
+hi ErrorMsg color:white; background-color: #ec6aa1;
+
+" キャレット幅を変更
+set! ui.caretWidth=2
+
+"=======================================================
+
+" qmarks
+:qmark f http://feedly.com/i/latest
+:qmark h http://b.hatena.ne.jp/
+:qmark g https://mail.google.com/mail/u/0/#inbox
+:qmark i https://inbox.google.com/u/0/?pli=1
+:qmark c https://calendar.google.com/calendar/render?hl=ja&pli=1#main_7 
+:qmark o https://outlook.office.com/owa/?realm=st.kyoto-u.ac.jp
+:qmark p http://getpocket.com/a/queue
+
+""=======================================================
+"
+"" Evernote Clearly(アドオン前提。動作確認：10.2.1.7)
+"command clearly javascript __readable_by_evernote.context_menu__call()
+"noremap <C-q> :clearly<CR>
+"
+"" Evernote Web Clipper(アドオン前提。動作確認：5.9.1。Ver6.0はキーボード操作との相性が悪い)
+"" 既にアップデートしている場合はアドオンのバージョン履歴からインストールし直すことができる
+"command clip javascript evernote_doAction()
+"noremap <C-e> :clip<CR>
+"
+"" DNS Flusher(アドオン前提。動作確認：3.1.1)
+"command flush javascript dnsFlusher.refreshdns()
+"noremap <C-d> :flush<CR>
+"
+"" Google Transrator(アドオン前提。動作確認：2.1.0.3m)
+"command transrate javascript zol_bod_google_translator.ToolBarTranslatorClick()
+"noremap <C-y> :transrate<CR>
+"
+""=======================================================
+"
+"" copy.js
+"javascript <<EOM
+"  liberator.globalVariables.copy_templates = [
+"    { label: 'title', value: '%TITLE%' },
+"    { label: 'url', value: '%URL%' },
+"    { label: 'anchor', value: '<a href="%URL%">%TITLE%</a>' },
+"    { label: 'markdown', value: '[%TITLE%](%URL%)' },
+"  ];
+"EOM
+"map CT :copy title<CR>
+"map CU :copy url<CR>
+"map CA :copy anchor<CR>
+"map CM :copy markdown<CR>
+"
+""=======================================================
+"
+"" feedSomeKeys_3.js
+""Gmail
+"lazy fmaps -urls='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gb gc gl b <S-i> <C-h> <C-Enter>
+""Google Calendar
+"lazy fmaps -urls='www\.google\.com/calendar' -events=vkeydown k j r t d w m c <Del> / + q s ?
+""Google Docs
+"lazy fmaps -urls='docs\.google\.com/' <Del> <C-x> <C-d> <C-v> <C-c> <C-y> <C-z> <C-a>
+""Feedly
+"lazy fmaps -urls='feedly\.com/' gm ga gg r j k n p o v m x s e t ? <S-m>
+"
+""=======================================================
+"
+"" fms_switcher.js
+"" 事前に対象端末を追加しておく必要あり
+"map MI :fms apple\ iPhone\ 6\ iOS8<CR>
+"map MA :fms Xperia\ Z3\ SOL26<CR>
+"map MN :fms off<CR>
+"
+""=======================================================
+"
+"" multi_requester.js
+"nmap K <C-c>:mr<Space>wikipedia-ja<Space><C-v><CR>
+"vmap K <C-c><Esc><Esc>:mr<Space>wikipedia-ja<Space><C-v><CR>
+"nmap A <C-c>:mr<Space>alc<Space><C-v><CR>
+"vmap A <C-c><Esc><Esc>:mr<Space>alc<Space><C-v><CR>
+"nmap T <C-c>:mr<Space>googletrans-ja<Space><C-v><CR>
+"vmap T <C-c><Esc><Esc>:mr<Space>googletrans-ja<Space><C-v><CR>
+"
+""=======================================================
+
+" Twitterへの接続がSSLのみになったので、Twittperator側でもSSLを使うように
+"let g:twittperator_use_ssl_connection_for_api_ep = 1
+"
+"" Streaming APIを使う
+"let g:twittperator_use_chirp = 1
+"
+"" 特定の単語を含むツイートを追いかける
+"let g:twittperator_track_words = "vimp,vimperator,twittperator,ついっぺ,ツイッペ"
+"
+"" Twitter IDの設定。いくつかのプラグインで必要
+"let g:twittperator_screen_name = "satoshim69"
+"
+"" タイムラインの表示
+"nnoremap ,tl :tw<CR>
+"
+"" ツイートする
+"nnoremap ,tw :tw<Space>
+"
+"" 返信する
+"nnoremap ,tr :tw<Space>@
+"
+"" ツイートに含まれるURLを開く
+"nnoremap ,t/ :tw!/<Tab>
+"
+"" 会話を辿る
+"nnoremap ,tt :tw!thread<Space>
+"
+"" 今見ているページへのリンクと共にツイートする
+"
+"" 何故か動かない．．．
+"" 方法1
+""nnoremap ,tu :js commandline.open(":",["tw",buffer.title,buffer.URI].join(" "),modes.EX)
+"
+"" 方法2
+""nnoremap ,tu :twuri
+""js <<EOM
+""commands.addUserCommand(
+""    ["twuri"],
+""    "Twittperator tweet with URI",
+""    function(){
+""        commandline.open(":",["tw",buffer.title,buffer.URI].join(" "),modes.EX);
+""    }
+"");
+""EOM
+"
+"" 方法3
+"" 応急処置としてこちらを採用.http://d.hatena.ne.jp/zenpou/20101114/1289739386を参考
+"cabbrev -javascript URL buffer.URL
+"cabbrev -javascript TITLE buffer.title
+"nnoremap ,tu :tw<Space>TITLE<Space>URL<Space><C-a><Right><Right><Space>
+"
+
+"===========================================================================
+
+" タイムカードのメッセージ入力
+js <<EOM
+commands.addUserCommand(
+    ["msg[2timecard]", "msg"],
+    "send msg to timecard",
+    function(args){
+        /* content.document.getElementsByName("msg").item(10).value=args.string; */
+        content.document.forms[10].elements[0].value=args.string;
+        content.document.getElementsByTagName('form').item(10).submit();
+    }
+);
+EOM
+
+" タイムカード更新
+js <<EOM
+commands.addUserCommand(
+    ["ti[mecard]", "tm"],
+    "update timecard",
+    function(args){
+        content.document.getElementsByName("state").item(10).value=args.string;
+        content.document.getElementsByTagName('form').item(10).submit();
+    }
+);
+EOM
+
+noremap ,tmk :tabopen http://karafuto/timecard<CR><ESC>:tm 帰宅
+noremap ,tmz :tabopen http://karafuto/timecard<CR><ESC>:tm 在室
+
+"なんとか新しいタブで開きたい．．．
+"js <<EOM
+"commands.addUserCommad(
+"    ["hoge"],
+"    "hoge",
+"    function(args){
+"        document.open();document.write('
+"<body><form action="http:karafuto/timecard" method="POST">
+"<input name="" value="0">
+"<input name="CRSPNK" value="NULL">
+"<input name="CRSRED" value="【NiftyID】">
+"<input name="CRSBLU" value="【パスワード】">
+"</form>
+"<script type="text/javascript">document.forms[0].submit();</script>
+"</body>');
+"    }
+");
+"EOM
+
+" 読み込み完了メッセージ
+echo "Loaded from vimperatorrc."
