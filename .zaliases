@@ -23,7 +23,6 @@ alias wl='emacs -e wl'
 alias wlnw='emacs -nw -e wl'
 
 alias w-time="ssh karafuto /var/www/timecard/w-time.rb | nkf -w"
-alias sl="/home/gyoten/bin/sl"
 
 alias subl="~/Application/sublime_text_3/sublime_text"
 

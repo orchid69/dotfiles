@@ -223,9 +223,9 @@ commands.addUserCommand(
     ["msg[2timecard]", "msg"],
     "send msg to timecard",
     function(args){
-        /* content.document.getElementsByName("msg").item(10).value=args.string; */
-        content.document.forms[10].elements[0].value=args.string;
-        content.document.getElementsByTagName('form').item(10).submit();
+        /* content.document.getElementsByName("msg").item(9).value=args.string; */
+        content.document.forms[9].elements[0].value=args.string;
+        content.document.getElementsByTagName('form').item(9).submit();
     }
 );
 EOM
@@ -236,8 +236,8 @@ commands.addUserCommand(
     ["ti[mecard]", "tm"],
     "update timecard",
     function(args){
-        content.document.getElementsByName("state").item(10).value=args.string;
-        content.document.getElementsByTagName('form').item(10).submit();
+        content.document.getElementsByName("state").item(9).value=args.string;
+        content.document.getElementsByTagName('form').item(9).submit();
     }
 );
 EOM
