@@ -27,7 +27,7 @@ alias w-time="ssh karafuto /var/www/timecard/w-time.rb | nkf -w"
 alias subl="~/Application/sublime_text_3/sublime_text"
 
 # shellの再起動
-alias rebootshell='exec -l $SHELL'
+alias resetshell='exec -l $SHELL'
 
 # ファイルの圧縮
 alias mcompress='tar cvzf $USER.tar.gz'

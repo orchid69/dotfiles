@@ -240,6 +240,10 @@ case $HOST in
 	export CUDA_HOME=/usr/local/cuda-8.0
 	export PATH=$CUDA_HOME/bin:$PATH
 	export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+    export LIBLEPT_HEADERSDIR=/usr/local/include
     ;;
     caster | king)
 	export PATH=/usr/local/cuda/bin:$PATH
