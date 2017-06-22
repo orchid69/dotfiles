@@ -79,3 +79,4 @@ alias setviv="source /opt/xilinx/Vivado/2016.2/settings64.sh"
 alias lpr='lpr -P apeos -o PageSize=A4 -o PageRegion=A4 -o FXOutputMode=Standard -o FXLayout=TopLeft -o Duplex=DuplexNoTumble -o FXMediaType=Plain -o FXColorMode=Black -o InputSlot=Auto -o FXCollate=False -o FXStaple=None -o FXPunch=Off -o Collate=True'
 alias i3lock='i3lock -i /home/satoshi/hinako.png -p default -d -n -c 000000'
 alias ssh='ssh -XC'
+alias htop='/usr/local/bin/htop'
