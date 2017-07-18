@@ -254,6 +254,11 @@ case $HOST in
 	
 	source /usr/local/bin/virtualenvwrapper.sh
 	export WORKON_HOME=~/.virtualenvs
+    
+    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+    export LIBLEPT_HEADERSDIR=/usr/local/include
+
+	export PATH=/home/satoshi/local/src/Quartus_Prime_Lite/quartus/bin:$PATH
     ;;
     * )
       export PATH=/opt/mentor/modeltech_SE10.4c/bin:$PATH
