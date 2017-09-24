@@ -269,6 +269,7 @@ case $HOST in
     Texas.*)
 	source /usr/local/bin/virtualenvwrapper.sh
 	export WORKON_HOME=~/.virtualenvs
+	export PATH=/Users/satoshi/local/bin:$PATH
     ;;
     * )
       export PATH=/opt/mentor/modeltech_SE10.4c/bin:$PATH
