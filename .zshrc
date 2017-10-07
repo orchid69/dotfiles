@@ -241,9 +241,12 @@ case $HOST in
 	export PATH=$CUDA_HOME/bin:$PATH
 	export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+    export PATH=$PATH:/home/satoshi/Private/state_bot/hubot/node_modules/.bin
+    export HUBOT_SLACK_TOKEN=xoxb-251442993141-1EzKFavHcYB7CMty7UdP2MC4
 
     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
     export LIBLEPT_HEADERSDIR=/usr/local/include
+	export PATH=/ldisk/satoshi/Quartus_Prime_Lite/quartus/bin:$PATH
     ;;
     caster | king)
 	export PATH=/usr/local/cuda/bin:$PATH
@@ -252,8 +255,8 @@ case $HOST in
 	export PATH=~/torch/bin:$PATH
 	export LD_LIBRARY_PATH=~/torch/lib:$LD_LIBRARY_PATH 
 	
-	source /usr/local/bin/virtualenvwrapper.sh
-	export WORKON_HOME=~/.virtualenvs
+	# source /usr/local/bin/virtualenvwrapper.sh
+	# export WORKON_HOME=~/.virtualenvs
     
     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
     export LIBLEPT_HEADERSDIR=/usr/local/include
@@ -269,6 +272,16 @@ case $HOST in
 esac
 
 export PATH=/home/satoshi/local/bin:$PATH
+export PATH=/home/satoshi/.local/bin:$PATH
+
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f ~/.local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=~/.virtualenvs
+    source ~/.local/bin/virtualenvwrapper.sh
+fi
 
 # 以下はhttp://d.hatena.ne.jp/oovu70/20120405/p1を参考
 # ------------------------------

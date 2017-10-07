@@ -3,10 +3,18 @@
 # ~/.xinitrc
 #
 
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=xim
-export XMODIFIERS=@im=ibus
-LC_ALL=en_US.UTF-8 ibus-daemon --daemonize --xim &
+# for ibus
+# export GTK_IM_MODULE=ibus
+# export QT_IM_MODULE=xim
+# export XMODIFIERS=@im=ibus
+# LC_ALL=en_US.UTF-8 ibus-daemon --daemonize --xim &
+
+# for fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+fcitx
+
 xmodmap ~/.speedswapper
 
 case `hostname` in
