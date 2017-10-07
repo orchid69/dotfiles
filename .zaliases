@@ -10,6 +10,11 @@ alias l='ls -a --color=auto'
 alias ls='ls -F --color=auto'
 alias la='ls -la -h --color=auto'
 
+#### Mac用設定
+alias l='gls -a --color=auto'
+alias ls='gls -F --color=auto'
+alias la='gls -la -h --color=auto'
+
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
 alias mkdir='nocorrect mkdir -m 755'
@@ -93,3 +98,5 @@ if [[ ${HOST} == "karafuto" ]];
     then alias vim='/usr/bin/vim'
 fi
 alias pandocpdf='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
+alias mountlab='sshfs okinawa.kuee.kyoto-u.ac.jp:/home/satoshi ~/lab/satoshi;\
+                sshfs okinawa.kuee.kyoto-u.ac.jp:/home/work/satoshi ~/lab/work/satoshi'

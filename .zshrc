@@ -87,6 +87,12 @@ if ( which dircolors >& /dev/null ); then
 	eval `dircolors --sh ~/.dircolors`
     fi
     export LS_COLORS="${LS_COLORS}:*~=01;42:*#=01;42:*%=01;42"
+#MAC用設定
+elif ( which gdircolors >& /dev/null ); then
+    if [ -f ~/.dircolors ] ; then
+	eval `gdircolors --sh ~/.dircolors`
+    fi
+    export LS_COLORS="${LS_COLORS}:*~=01;42:*#=01;42:*%=01;42"
 else
 
 # lsの色の設定
@@ -262,6 +268,11 @@ case $HOST in
     export LIBLEPT_HEADERSDIR=/usr/local/include
 
 	export PATH=/home/satoshi/local/src/Quartus_Prime_Lite/quartus/bin:$PATH
+    ;;    
+    Texas.*)
+	source /usr/local/bin/virtualenvwrapper.sh
+	export WORKON_HOME=~/.virtualenvs
+	export PATH=/Users/satoshi/local/bin:$PATH
     ;;
     * )
       export PATH=/opt/mentor/modeltech_SE10.4c/bin:$PATH
