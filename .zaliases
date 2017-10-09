@@ -11,9 +11,9 @@ alias ls='ls -F --color=auto'
 alias la='ls -la -h --color=auto'
 
 #### Mac用設定
-alias l='gls -a --color=auto'
-alias ls='gls -F --color=auto'
-alias la='gls -la -h --color=auto'
+# alias l='gls -a --color=auto'
+# alias ls='gls -F --color=auto'
+# alias la='gls -la -h --color=auto'
 
 alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'

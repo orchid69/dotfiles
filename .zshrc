@@ -1,6 +1,11 @@
-if [ -f /home/default/etc/zshrc ] ; then
-    . /home/default/etc/zshrc
+if [ -f ~/.zshrc.local ];
+then
+  . ~/.zshrc.local
 fi
+
+# if [ -f /home/default/etc/zshrc ] ; then
+#     . /home/default/etc/zshrc
+# fi
 
 [ -n "`alias run-help`" ] && unalias run-help
 autoload -U run-help
@@ -248,7 +253,6 @@ case $HOST in
 	export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
     export PATH=$PATH:/home/satoshi/Private/state_bot/hubot/node_modules/.bin
-    export HUBOT_SLACK_TOKEN=xoxb-251442993141-1EzKFavHcYB7CMty7UdP2MC4
 
     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
     export LIBLEPT_HEADERSDIR=/usr/local/include
