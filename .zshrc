@@ -182,9 +182,9 @@ setopt rm_star_silent
 setopt numeric_glob_sort
 
 ## TAB で順に補完候補を切り替える
-# setopt auto_menu 
+setopt auto_menu 
 ## TAB で順に補完候補を切り替えない
-setopt noautomenu
+# setopt noautomenu
 
 # Shift-Tabで補完候補を逆順する("\e[Z"でも動作する)
 # bindkey "^[[Z" reverse-menu-complete 
@@ -211,8 +211,16 @@ zstyle ':completion:*' match-original both
 zstyle ':completion:*' max-errors 1 numeric
 zstyle ':completion:*' old-list _complete _approximate _correct _match _expand
 zstyle ':completion:*' original true
+
+# 補完時にhjklで選択
+zstyle ':completion:*:default' menu select=2
+zmodload -i zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+
 zstyle :compinstall filename '~/.zshrc'
-#zstyle ':completion:*:default' menu select=1
 
 # 補完機能が強力になる
 autoload -U compinit
@@ -253,6 +261,12 @@ case $HOST in
     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
     export LIBLEPT_HEADERSDIR=/usr/local/include
 	export PATH=/ldisk/satoshi/Quartus_Prime_Lite/quartus/bin:$PATH
+    ;;
+    bateau )
+    export  PATH=/usr/sbin:$PATH
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
     ;;
     caster | king)
 	export PATH=/usr/local/cuda/bin:$PATH
@@ -377,3 +391,7 @@ fi
 #
 
 stty -ixon
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
