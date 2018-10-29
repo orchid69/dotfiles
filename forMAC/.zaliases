@@ -1,0 +1,102 @@
+## common aliases
+alias h='history -r 20'
+
+# alias l='ls -a'
+# alias ls='ls -F'
+# alias la='ls -la -h'
+
+#### colored ls (使うときは以下の comment out をはずす)
+# alias l='ls -a --color=auto'
+# alias ls='ls -F --color=auto'
+# alias la='ls -la -h --color=auto'
+
+### Mac用設定
+alias l='gls -a --color=auto'
+alias ls='gls -F --color=auto'
+alias la='gls -la -h --color=auto'
+
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
+alias mkdir='nocorrect mkdir -m 755'
+alias rm='rm -i'
+alias set_prompt='set prompt="[%n@%m:%~]>"'
+alias cl='clear'
+
+alias x='ssh-agent startx'
+alias x8='ssh-agent startx -- -bpp 8'
+alias wl='emacs -e wl'
+alias wlnw='emacs -nw -e wl'
+
+alias w-time="ssh karafuto /var/www/timecard/w-time.rb | nkf -w"
+
+alias subl="~/Application/sublime_text_3/sublime_text"
+
+# shellの再起動
+alias resetshell='exec -l $SHELL'
+
+# ファイルの圧縮
+alias mcompress='tar cvzf $USER.tar.gz'
+
+# ファイルの解凍
+muncompress () {
+    for file in "$@"
+      do
+      case $file in
+          *.tar.gz ) tar xzvf   $file ;;
+          *.tgz    ) tar xzvf   $file ;;
+          *.tar    ) tar xvf    $file ;;
+          *.gz     ) gunzip     $file ;;
+          *.zip    ) unzip      $file ;;
+          *.tar.bz2) tar xjvf   $file ;;
+          *.tbz2   ) tar xjvf   $file ;;
+          *.bz2    ) bzip2 -d   $file ;;
+          *.lzh    ) lha x      $file ;;
+          *.rar    ) rar x      $file ;;
+          *.Z      ) uncompress $file ;;
+          *.jar    ) jar xvf    $file ;;
+              *)
+              echo "Can't decide how to uncompress $file."
+              ;;
+                esac
+        done
+}
+if [[ $ZSH_VERSION > 4.2 ]]; then
+    alias -s tar.gz='muncompress'
+    alias -s tgz='muncompress'
+    alias -s tar='muncompress'
+    alias -s gz='muncompress'
+    alias -s zip='muncompress'
+    alias -s tar.bz2='muncompress'
+    alias -s tbz2='muncompress'
+    alias -s bz2='muncompress'
+    alias -s lzh='muncompress'
+    alias -s rar='muncompress'
+    alias -s Z='muncompress'
+    alias -s jar='muncompress'
+fi
+
+alias envorchid='source /home/satoshi/orchid/bin/activate'
+alias envorchid2='source /home/satoshi/orchid2/bin/activate'
+alias myenv='source /home/satoshi/myenv/bin/activate'
+alias lorenz_attractor='/home/satoshi/local/src/processing-3.0.2/processing-java* \
+                        --sketch=/home/satoshi/Documents/sketchbook/lorenz_attractor --run'
+alias prank='/home/satoshi/local/src/processing-3.0.2/processing-java* \
+            --sketch=/home/satoshi/Documents/sketchbook/fontTest3 --run'
+alias setviv="source /opt/xilinx/Vivado/2016.2/settings64.sh"
+alias lpr='lpr -P apeos -o PageSize=A4 -o PageRegion=A4 -o FXOutputMode=Standard -o FXLayout=TopLeft -o Duplex=DuplexNoTumble -o FXMediaType=Plain -o FXColorMode=Black -o InputSlot=Auto -o FXCollate=False -o FXStaple=None -o FXPunch=Off -o Collate=True'
+alias lprc='lpr -P apeosc -o PageSize=A4 -o PageRegion=A4 -o FXOutputMode=Standard -o FXLayout=TopLeft -o Duplex=DuplexNoTumble -o FXMediaType=Plain -o FXColorMode=Auto -o InputSlot=Auto -o FXCollate=False -o FXStaple=None -o FXPunch=Off'
+alias i3lock='i3lock -i /home/satoshi/hinako.png -p default -d -n -c 000000'
+# alias ssh='ssh -XC'
+if [ -f /usr/local/bin/htop ]; then
+    alias htop='/usr/local/bin/htop'
+elif [ -f ~/local/bin/htop ]; then
+    alias htop='~/local/bin/htop'
+else
+    
+fi
+if [[ ${HOST} == "karafuto" ]]; 
+    then alias vim='/usr/bin/vim'
+fi
+alias pandocpdf='pandoc -V documentclass=ltjarticle --latex-engine=lualatex'
+alias mountlab='sshfs okinawa.kuee.kyoto-u.ac.jp:/home/satoshi ~/lab/satoshi;\
+                sshfs okinawa.kuee.kyoto-u.ac.jp:/home/work/satoshi ~/lab/work/satoshi'
