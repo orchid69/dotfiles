@@ -15,13 +15,18 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx
 
-xmodmap ~/.speedswapper
+# xmodmap ~/.speedswapper
+xmodmap ~/.Xmodmap
 
 case `hostname` in
 menorca )
     xrandr --output HDMI1 --mode 1920x1080
     xrandr --output VGA1 --mode 1920x1080
     xrandr --output VGA1 --auto --right-of HDMI1
+    ;;
+trinity )
+    xrandr --output DP-1 --mode 2560x1440
+    xrandr --output DP-1 --right-of DP-2
     ;;
 molokai )
     xrandr --output DVI-I-1 --mode 1024x768

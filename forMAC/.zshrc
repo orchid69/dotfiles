@@ -253,7 +253,7 @@ case $HOST in
 	export CUDA_HOME=/usr/local/cuda-8.0
 	export PATH=$CUDA_HOME/bin:$PATH
 	export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
-    # . /opt/torch/install/bin/torch-activate
+    . /opt/torch/install/bin/torch-activate
 	;;
     hawaii ) 
 	export CUDA_HOME=/usr/local/cuda-8.0
@@ -377,7 +377,7 @@ if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ]; then
         PROMPT=$tmp_prompt2
     elif [ ${HOST} = "mai" -o ${HOST} = "camel" -o ${HOST} = "bateau" ]; then
         PROMPT=$tmp_prompt3
-    elif [ ${HOST} = "trinity" ]; then
+    elif [ ${HOST} = "menorca" ]; then
         PROMPT=$tmp_prompt5
     else
         PROMPT=$tmp_prompt4
